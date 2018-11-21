@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-sm-9">
+    <div *ngFor="let post of post" class="post">
+      
+        <div class="post-title">
+          <h4><a href="/details/{{post._id}}">{{post.title | titlecase}}</a></h4>
+          <div class="post-user"><span> Posted By <i class="fa fa-user"></i> {{post.name}} on {{ post.timestamp | date :'short'}}</span></div>
+        </div>
+        <div class="post-body">
+          <p *ngIf="post.image!=undefined">
+            <img src="{{post.image}}" style="width:100%">
+          </p>
+          <p>{{post.body}}</p>
+        </div>
+        <hr>
+        <div class="post-footer">
+           <ul class="list-inline unstyled">
+              <li class="list-inline-item"><i class="fa fa-thumbs-up"></i> Like <span class="like-count"></span></li>
+              <li class="list-inline-item"><i class="fa fa-comment"></i> Comment <span class="comment-count"></span></li>
+           </ul> 
+        </div>
+      
+      </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="suggest-user post">
+      <h5>Suggested Users</h5>
+      <div *ngFor="let user of user">
+        <a class="user-details">
+          <div class="row">
+            <div class="col-sm-3">
+              <div class="user-img">
+                <img [src]="imageUrl">
+              </div>
+            </div>
+            <div class="col-sm-9">
+              <p style="margin-bottom:0px">{{user.name}}</p>
+              <button class="btn btn-sm">Follow</button>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="post-categories post">
+        <h5>Categories</h5>
+        <ul  *ngFor="let categ of category">
+          <li><a href="">{{categ.categ}}</a></li>
+        </ul>
+    </div>
+  </div>
+</div>
